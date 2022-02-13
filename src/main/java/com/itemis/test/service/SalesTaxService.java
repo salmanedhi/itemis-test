@@ -7,6 +7,6 @@ import com.itemis.test.dto.ReceiptOutputDto;
 
 public interface SalesTaxService {
 
-	ReceiptOutputDto generateReceipt(ItemDto item);
+	ReceiptOutputDto generateReceipt(List<ItemDto> items);
 	
 }

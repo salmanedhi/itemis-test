@@ -1,38 +1,40 @@
 package com.itemis.test.dto;
 
+import com.itemis.test.dto.types.ItemName;
+import com.itemis.test.dto.types.ItemType;
 
 public class ItemDto {
 	
-	private String name;
+	private ItemName name;
 	
-	private String type;
+	private ItemType type;
 	
 	private double amount;
 	
 	
-	public ItemDto(String name, String type, double amount) {
+	public ItemDto(ItemName name, ItemType type, double amount) {
 		this.name = name;
 		this.type = type;
 		this.amount = amount;
 	}
 	
-	public void setName(String name) {
+	public void setName(ItemName name) {
 		this.name = name;
 	}
 	
-	public String getName() {
+	public ItemName getName() {
 		return this.name;
 	}
 	
-	public void setType(String type) {
+	public void setType(ItemType type) {
 		this.type = type;
 	}
 	
-	public String getType() {
+	public ItemType getType() {
 		return this.type;
 	}
 	
-	public void setName(double amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	

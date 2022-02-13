@@ -1,16 +1,19 @@
 package com.itemis.test.dto;
 
+import java.util.List;
+
 public class ReceiptOutputDto {
 	
-	private ItemDto item;
+	private List<ItemDto> items;
 	private double salesTax;
 	private double total;
 	
-	public ItemDto getItem() {
-		return item;
+	public List<ItemDto> getItems() {
+		return this.items;
 	}
-	public void setItem(ItemDto item) {
-		this.item = item;
+	
+	public void setItems(List<ItemDto> items) {
+		this.items = items;
 	}
 	
 	public double getSalesTax() {

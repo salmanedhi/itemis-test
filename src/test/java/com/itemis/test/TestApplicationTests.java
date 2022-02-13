@@ -6,9 +6,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.itemis.test.dto.ItemDto;
 import com.itemis.test.dto.ReceiptOutputDto;
+import com.itemis.test.dto.types.ItemName;
+import com.itemis.test.dto.types.ItemType;
 import com.itemis.test.service.SalesTaxService;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @SpringBootTest
@@ -20,12 +25,35 @@ class TestApplicationTests {
 	@Test
 	void printReceiptOfSingleBookItemTest() {
 		
-		ItemDto bookItem = new ItemDto("book", "book", 12.49);
+		List<ItemDto> items = new ArrayList<>();
 		
-		ReceiptOutputDto finalReceiptDto = salesTaxService.generateReceipt(bookItem);
+		ItemDto bookItem = new ItemDto(ItemName.BOOK, ItemType.BOOK, 12.49);
+		
+		items.add(bookItem);
+		
+		ReceiptOutputDto finalReceiptDto = salesTaxService.generateReceipt(items);
 		
 		assertEquals(finalReceiptDto.getSalesTax(), 0, 0);
 		assertEquals(finalReceiptDto.getTotal(), 12.49, 0);
+	}
+	
+	@Test
+	void printReceiptOfMultipleItemsInput1() {
+		
+		List<ItemDto> items = new ArrayList<>();
+		
+		ItemDto bookItem = new ItemDto(ItemName.BOOK, ItemType.BOOK, 12.49);
+		ItemDto musicItem = new ItemDto(ItemName.MUSIC_CD, ItemType.OTHER, 14.99);
+		ItemDto barItem = new ItemDto(ItemName.CHOCOLATE_BAR, ItemType.FOOD, 0.85);
+		
+		items.add(bookItem);
+		items.add(musicItem);
+		items.add(barItem);
+		
+		ReceiptOutputDto finalReceiptDto = salesTaxService.generateReceipt(items);
+		
+		assertEquals(finalReceiptDto.getSalesTax(), 1.50, 0);
+		assertEquals(finalReceiptDto.getTotal(), 29.83, 0);
 	}
 
 }
