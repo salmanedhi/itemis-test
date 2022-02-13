@@ -1,14 +1,6 @@
 package com.itemis.test.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
 public class ItemDto {
 	
 	private String name;
@@ -17,10 +9,37 @@ public class ItemDto {
 	
 	private double amount;
 	
+	
 	public ItemDto(String name, String type, double amount) {
 		this.name = name;
 		this.type = type;
 		this.amount = amount;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public String getType() {
+		return this.type;
+	}
+	
+	public void setName(double amount) {
+		this.amount = amount;
+	}
+	
+	public double getAmount() {
+		return this.amount;
+	}
+	
+	
 
 }
