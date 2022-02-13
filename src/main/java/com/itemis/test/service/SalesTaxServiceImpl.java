@@ -12,6 +12,10 @@ import com.itemis.test.dto.types.ItemType;
 @Component
 public class SalesTaxServiceImpl implements SalesTaxService {
 
+	private double SALES_TAX = 10;
+	private double IMPORTED_SALES_TAX = 5;
+	
+	
 	@Override
 	public ReceiptOutputDto generateReceipt(List<ItemDto> items) {
 		
@@ -26,9 +30,9 @@ public class SalesTaxServiceImpl implements SalesTaxService {
 					// apply sales tax
 					double salesTaxAmount = 0;
 					if(item.getIsImported()) {
-						salesTaxAmount = (item.getAmount() * 15) / 100;
+						salesTaxAmount = (item.getAmount() * (SALES_TAX + IMPORTED_SALES_TAX)) / 100;
 					} else {
-						salesTaxAmount = (item.getAmount() * 10) / 100;
+						salesTaxAmount = (item.getAmount() * SALES_TAX) / 100;
 					}
 					// round to 2 decimal places
 					salesTaxAmount = Math.round(salesTaxAmount * 100.0) / 100.0;
@@ -37,7 +41,8 @@ public class SalesTaxServiceImpl implements SalesTaxService {
 					salesTax += salesTaxAmount;
 				} else {
 					if(item.getIsImported()) {
-						double salesTaxAmount = (item.getAmount() * 5) / 100;
+						double salesTaxAmount = (item.getAmount() * IMPORTED_SALES_TAX) / 100;
+						salesTaxAmount = Math.round(salesTaxAmount * 100.0) / 100.0;
 						
 						item.setAmount(item.getAmount() + salesTaxAmount);
 						salesTax += salesTaxAmount;
