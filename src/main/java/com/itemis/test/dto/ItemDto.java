@@ -11,11 +11,14 @@ public class ItemDto {
 	
 	private double amount;
 	
+	private boolean isImported;
 	
-	public ItemDto(ItemName name, ItemType type, double amount) {
+	
+	public ItemDto(ItemName name, ItemType type, double amount, boolean isImported) {
 		this.name = name;
 		this.type = type;
 		this.amount = amount;
+		this.isImported = isImported;
 	}
 	
 	public void setName(ItemName name) {
@@ -40,6 +43,15 @@ public class ItemDto {
 	
 	public double getAmount() {
 		return this.amount;
+	}
+
+	
+	public boolean getIsImported() {
+		return isImported;
+	}
+
+	public void setIsImported(boolean isImported) {
+		this.isImported = isImported;
 	}
 	
 	

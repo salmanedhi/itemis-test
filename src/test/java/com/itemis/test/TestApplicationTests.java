@@ -27,7 +27,7 @@ class TestApplicationTests {
 		
 		List<ItemDto> items = new ArrayList<>();
 		
-		ItemDto bookItem = new ItemDto(ItemName.BOOK, ItemType.BOOK, 12.49);
+		ItemDto bookItem = new ItemDto(ItemName.BOOK, ItemType.BOOK, 12.49, false);
 		
 		items.add(bookItem);
 		
@@ -42,9 +42,9 @@ class TestApplicationTests {
 		
 		List<ItemDto> items = new ArrayList<>();
 		
-		ItemDto bookItem = new ItemDto(ItemName.BOOK, ItemType.BOOK, 12.49);
-		ItemDto musicItem = new ItemDto(ItemName.MUSIC_CD, ItemType.OTHER, 14.99);
-		ItemDto barItem = new ItemDto(ItemName.CHOCOLATE_BAR, ItemType.FOOD, 0.85);
+		ItemDto bookItem = new ItemDto(ItemName.BOOK, ItemType.BOOK, 12.49, false);
+		ItemDto musicItem = new ItemDto(ItemName.MUSIC_CD, ItemType.OTHER, 14.99, false);
+		ItemDto barItem = new ItemDto(ItemName.CHOCOLATE_BAR, ItemType.FOOD, 0.85, false);
 		
 		items.add(bookItem);
 		items.add(musicItem);
@@ -61,13 +61,13 @@ class TestApplicationTests {
 		
 		List<ItemDto> items = new ArrayList<>();
 		
-		items.add(new ItemDto(ItemName.CHOCOLATE_BOX, ItemType.FOOD, 10.00));
-		items.add(new ItemDto(ItemName.PERFUME, ItemType.OTHER, 47.50));
+		items.add(new ItemDto(ItemName.CHOCOLATE_BOX, ItemType.FOOD, 10.00, true));
+		items.add(new ItemDto(ItemName.PERFUME, ItemType.OTHER, 47.50, true));
 		
 		ReceiptOutputDto finalReceiptDto = salesTaxService.generateReceipt(items);
 		
-		assertEquals(finalReceiptDto.getSalesTax(), 7.65, 0);
-		assertEquals(finalReceiptDto.getTotal(), 65.15, 0);
+		assertEquals(finalReceiptDto.getSalesTax(), 7.63, 0);
+		assertEquals(finalReceiptDto.getTotal(), 65.13, 0);
 	}
 
 }
