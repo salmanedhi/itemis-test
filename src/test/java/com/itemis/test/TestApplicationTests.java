@@ -55,6 +55,20 @@ class TestApplicationTests {
 		assertEquals(finalReceiptDto.getSalesTax(), 1.50, 0);
 		assertEquals(finalReceiptDto.getTotal(), 29.83, 0);
 	}
+	
+	@Test
+	void printReceiptOfMultipleItemsInput2() {
+		
+		List<ItemDto> items = new ArrayList<>();
+		
+		items.add(new ItemDto(ItemName.CHOCOLATE_BOX, ItemType.FOOD, 10.00));
+		items.add(new ItemDto(ItemName.PERFUME, ItemType.OTHER, 47.50));
+		
+		ReceiptOutputDto finalReceiptDto = salesTaxService.generateReceipt(items);
+		
+		assertEquals(finalReceiptDto.getSalesTax(), 7.65, 0);
+		assertEquals(finalReceiptDto.getTotal(), 65.15, 0);
+	}
 
 }
 
